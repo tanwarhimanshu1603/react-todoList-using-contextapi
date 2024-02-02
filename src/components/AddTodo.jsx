@@ -19,14 +19,35 @@ const AddTodo = () => {
         setTodo({...todo,status: e.target.value === 'complete' ? true : false})
     }
 
+    const getCurrentTimeAndDate = () => {
+        const now = new Date();
+
+        // Get time in 12-hour format with AM/PM
+        const time = now.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true,
+        });
+
+        // Get date in MM/DD/YYYY format
+        const date = now.toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric',
+        });
+
+        return `${time}, ${date}`;
+    }
+
     const handleAddNewTodo = (e) => {
         e.preventDefault();
         if(todo.title.length === 0)return;
+        const currentTimeAndDate = getCurrentTimeAndDate();
         const newTodo = {
             id: todosList.length+1,
             title: todo.title,
             status: todo.status,
-            duration: '02:32 AM, 02/02/2024'
+            duration: currentTimeAndDate
         }
         handleAddTodo(newTodo);
         setTodo({

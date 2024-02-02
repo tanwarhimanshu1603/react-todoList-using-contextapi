@@ -16,7 +16,7 @@ const Todos = () => {
     <div className='bg-[#dedfe1] lg:w-[700px] md:w-[500px] w-[348px] mt-5 px-2 py-5 rounded-lg flex flex-col justify-center'>
         {
             finalTodosList.length === 0 ? <EmptyToDo /> : 
-            finalTodosList.map(({id,title,status}) => <Todo key={id} id={id} title={title} status={status} />)
+            finalTodosList.map(({id,title,status,duration}) => <Todo key={id} id={id} title={title} status={status} duration={duration}/>)
         }
         
     </div>

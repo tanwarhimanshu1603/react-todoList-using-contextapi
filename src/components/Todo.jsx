@@ -8,7 +8,7 @@ import {
   } from "react-icons/md";
 import { useTodo } from '../context/TodoContextProvider';
 
-const Todo = ({id,title,status}) => {
+const Todo = ({id,title,status,duration}) => {
     const {handleTodoStatusChange,handleTodosEdit,handleTodosDeletion} = useTodo();
     const [isCompleted,setIsCompleted] = useState(status)
     const [iseEditable,setIsEditable] = useState(false);
@@ -41,7 +41,7 @@ const Todo = ({id,title,status}) => {
             <div className='flex flex-col justify-center'>
                 <input value={todoTitle} onChange={(e) => setTodoTitle(e.target.value)} type="text" className={`bg-gray-200 rounded-md px-2 py-1 text-xs w-[180px] md:w-[300px] lg:w-[400px] focus:outline-1 focus:outline-[#abb2ff] ${!iseEditable && 'hidden'}`}/>
                 <p className={`text-md ${isCompleted && 'line-through text-[#616eff]'} ${iseEditable && 'hidden'}`}>{todoTitle}</p>
-                <p className='text-xs text-gray-500'>03:19 AM, 02/02/2024</p>
+                <p className='text-xs text-gray-500'>{duration}</p>
             </div>
         </div>
         {/* Edit and delete */}
